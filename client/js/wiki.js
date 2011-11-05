@@ -2,7 +2,7 @@
 (function (exports, $) {
     // JSONP client to Henri's server
     exports.makeMeAWiki = function (url) {
-        url = url || "http://tokyo.local:8080/_rest_/";
+        url = url || "http://tokyo.local:8080/";
         // XXX
         //  make online depend on navigator.onLine
         return {
@@ -10,6 +10,7 @@
         ,   ls:     url + "_list_"
         ,   online: true
         ,   list:   function (cb) {
+                console.log("list");
                 if (this.online) {
                     $.ajax({
                         url:        this.ls
@@ -29,7 +30,10 @@
                     $.ajax({
                         url:        this.root + path
                     ,   dataType:   "jsonp"
-                    ,   success:    function (data) { cb(null, data); }
+                    ,   success:    function (data) {
+                            if ("This page is empty" === data.content) cb(404);
+                            else cb(null, data);
+                        }
                     ,   error:      function (xhr, err) { cb(err); }
                     });
                 }
@@ -44,8 +48,8 @@
                 if (this.online) {
                     $.ajax({
                         url:        this.root + path
-                    ,   method:     "POST"
-                    ,   data:       cnt
+                    ,   type:       "POST"
+                    ,   data:       { content: cnt }
                     ,   success:    function () { cb(null); }
                     ,   error:      function (xhr, err) { cb(err); }
                     });
@@ -59,7 +63,7 @@
                 if (this.online) {
                     $.ajax({
                         url:        this.root + path
-                    ,   method:     "DELETE"
+                    ,   type:       "DELETE"
                     ,   success:    function () { cb(null); }
                     ,   error:      function (xhr, err) { cb(err); }
                     });
