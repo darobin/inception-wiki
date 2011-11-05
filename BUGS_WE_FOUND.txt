@@ -1,1 +1,4 @@
-/_rest_/test
+
+• if we had <html cache>, we wouldn't need the stupid manifest
+
+
