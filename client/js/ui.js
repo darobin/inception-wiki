@@ -1,4 +1,25 @@
 (function (exports, $) {
+    var app = Davis(function () {
+        this.get("/", function () {
+            location.pathname = "/index";
+        });
+        this.get("/:path", function (req) {
+            wiki.get(req.params["path"], function (err, cnt) {
+                if (err) {
+                    showForm(path);
+                    content("This page does not exist yet, simply create it using the form above.");
+                }
+                else {
+                    content(cnt);
+                }
+            });
+        })
+    });
+    
+    function content (cnt) {
+        $("#body").html(cnt);
+    }
+    
     var wiki = makeMeAWiki();
     function listPages () {
         wiki.list(function (err, data) {
@@ -15,9 +36,10 @@
     listPages();
     
     $("#create").click(showForm);
-    function showForm () {
+    function showForm (path) {
         var $form = $("#new-page")
         $form[0].reset();
+        if (path) $("#page-path").val(path);
         $form.show();
         $form.find("input:first").focus();
         $form.submit(function (ev) {

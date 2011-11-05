@@ -8,7 +8,7 @@
         return {
             root:   url + "_rest_/"
         ,   ls:     url + "_list_"
-        ,   online: false
+        ,   online: true
         ,   list:   function (cb) {
                 if (this.online) {
                     $.ajax({
