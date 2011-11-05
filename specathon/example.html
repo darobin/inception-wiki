@@ -16,7 +16,17 @@
     </prefetch>
   </head>
   <body>
+    <!-- 
+      - this gets cached automatically
+    -->
+    <img src='robin-looking-sexy.jpg'/>
+    <!-- 
+      - we can specify that something isn't cached
+    -->
     <video src='robin-stripping.vid' nocache></video>
+    <!-- 
+      - do we need to re-specify caching on non-SOP resources?
+    -->
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' cache></script>
   </body>
 </html>
