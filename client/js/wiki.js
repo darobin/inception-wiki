@@ -5,8 +5,24 @@
         // XXX
         //  make online depend on navigator.onLine
         return {
-            root:   url
+            root:   url + "_rest_/"
+        ,   ls:     url + "_list_/"
         ,   online: true
+        ,   list:   function (cb) {
+                if (this.online) {
+                    $.ajax({
+                        url:        this.ls
+                    ,   dataType:   "jsonp"
+                    ,   success:    function (data) { cb(null, data); }
+                    ,   error:      function (xhr, err) { cb(err); }
+                    });
+                }
+                else {
+                    var arr = [];
+                    for (var i = 0, n = localStorage.length; i < n; i++) arr.push(localStorage[i]);
+                    cb(null, arr);
+                }
+            }
         ,   get:    function (path, cb) {
                 if (this.online) {
                     $.ajax({
