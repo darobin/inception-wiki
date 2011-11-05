@@ -1,4 +1,5 @@
 
 • if we had <html cache>, we wouldn't need the stupid manifest
+• couldn't load jQ from the CDN
 
 
