@@ -2,12 +2,31 @@
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <link rel='stylesheet' href='/css/reset.css' type='text/css' media='all' charset='utf-8'/>
+    <link rel='stylesheet' href='/css/960.css' type='text/css' media='all' charset='utf-8'/>
+    <link rel='stylesheet' href='/css/inception.css' type='text/css' media='all' charset='utf-8'/>
     <title>Inception</title>
   </head>
   <body>
-    
+    <div id='page' class='container_12'>
+      <header class='grid_12'>
+        <h1>Inception Wiki</h1>
+      </header>
+      <div class='grid_12'>
+        <button id='create'>New Page</button>
+        <form id='new-page' class='container_12'>
+          <label class='grid_12'>Path: <input type='text' id='page-path' name='path'/></label>
+          <label class='grid_12' for='page-content'>Content:</label>
+          <textarea name='content' id='page-content' class='grid_12'></textarea>
+          <input type='submit' value='Ok'/>
+        </form>
+      </div>
+      <nav class='grid_3' id='nav'></nav>
+      <div id='body' class='grid_9'></div>
+    </div>
   </body>
-  <script src='js/jquery.min.js'></script>
-  <script src='js/davis.js'></script>
-  <script src='js/wiki.js'></script>
+  <script src='/js/jquery.min.js'></script>
+  <script src='/js/davis.js'></script>
+  <script src='/js/wiki.js'></script>
+  <script src='/js/ui.js' defer></script>
 </html>

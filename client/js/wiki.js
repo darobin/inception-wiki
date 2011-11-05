@@ -1,13 +1,14 @@
+
 (function (exports, $) {
     // JSONP client to Henri's server
-    exports.wiki = funtion (url) {
+    exports.makeMeAWiki = function (url) {
         url = url || "http://tokyo.local:8080/_rest_/";
         // XXX
         //  make online depend on navigator.onLine
         return {
             root:   url + "_rest_/"
-        ,   ls:     url + "_list_/"
-        ,   online: true
+        ,   ls:     url + "_list_"
+        ,   online: false
         ,   list:   function (cb) {
                 if (this.online) {
                     $.ajax({
@@ -45,7 +46,6 @@
                         url:        this.root + path
                     ,   method:     "POST"
                     ,   data:       cnt
-                    ,   dataType:   "jsonp"
                     ,   success:    function () { cb(null); }
                     ,   error:      function (xhr, err) { cb(err); }
                     });
@@ -60,7 +60,6 @@
                     $.ajax({
                         url:        this.root + path
                     ,   method:     "DELETE"
-                    ,   dataType:   "jsonp"
                     ,   success:    function () { cb(null); }
                     ,   error:      function (xhr, err) { cb(err); }
                     });
@@ -70,9 +69,5 @@
                 }
             }
         };
-    }
-    exports.wiki = {
     };
-    
-    
 })(window, jQuery);
