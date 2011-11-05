@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+  - the cache attribute can take a fingerprint value so that you can force a cache bust
+  <html cache='98798798'>
+-->
+<html cache>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <title>Manifest</title>
+    <!-- 
+      - prefetch
+    -->
+    <prefetch>
+      /foo/bar
+      /something/else
+    </prefetch>
+  </head>
+  <body>
+    <video src='robin-stripping.vid' nocache></video>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' cache></script>
+  </body>
+</html>
+
+<!-- 
+  - things that get loaded *after* the load event has dispatched, one can also use the cache attribute to join
+  the cache group
+-->
+
