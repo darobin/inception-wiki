@@ -14,6 +14,7 @@
       /foo/bar
       /something/else
     </prefetch>
+    <link rel="prefetch" href="/cache.manifest">
   </head>
   <body>
     <!-- 
@@ -36,3 +37,5 @@
   the cache group
 -->
 
+<!-- add this resource to the app cache -->
+window.applicationCache.loadResource("/foo/bar.jpg")
